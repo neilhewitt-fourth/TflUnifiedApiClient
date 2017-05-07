@@ -14,15 +14,6 @@
         [Newtonsoft.Json.JsonProperty("neLon", Required = Newtonsoft.Json.Required.Always)]
         public double NeLon { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static GeoPointBBox FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<GeoPointBBox>(data);
-        }
     }
 }
 

@@ -31,15 +31,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("orderedLineRoutes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public IEnumerable<OrderedRoute> OrderedLineRoutes { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static RouteSequence FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<RouteSequence>(data);
-        }
     }
 }
 

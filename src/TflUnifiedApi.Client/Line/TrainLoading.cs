@@ -31,15 +31,6 @@
         [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Value { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static TrainLoading FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<TrainLoading>(data);
-        }
     }
 }
 

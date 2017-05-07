@@ -40,15 +40,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("destinationName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DestinationName { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static StopPointRouteSection FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<StopPointRouteSection>(data);
-        }
     }
 }
 

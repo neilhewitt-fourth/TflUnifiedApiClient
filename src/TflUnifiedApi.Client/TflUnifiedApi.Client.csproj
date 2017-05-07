@@ -163,6 +163,26 @@
     <Compile Include="Line\TwentyFourHourClockTime.cs" />
     <Compile Include="Line\ValidityPeriod.cs" />
     <Compile Include="Enums\WalkingSpeed.cs" />
+    <Compile Include="Unused\Coordinate.cs" />
+    <Compile Include="Unused\CycleSuperhighway.cs" />
+    <Compile Include="Unused\DateRange.cs" />
+    <Compile Include="Unused\DateRangeNullable.cs" />
+    <Compile Include="Unused\Fare.cs" />
+    <Compile Include="Unused\FareBounds.cs" />
+    <Compile Include="Unused\FareDetails.cs" />
+    <Compile Include="Unused\FaresMode.cs" />
+    <Compile Include="Unused\FaresPeriod.cs" />
+    <Compile Include="Unused\FaresSection.cs" />
+    <Compile Include="Unused\GeoCodeSearchMatch.cs" />
+    <Compile Include="Unused\GeoPointBBox.cs" />
+    <Compile Include="Unused\Message.cs" />
+    <Compile Include="Unused\PostcodeInput.cs" />
+    <Compile Include="Unused\Recommendation.cs" />
+    <Compile Include="Unused\RecommendationResponse.cs" />
+    <Compile Include="Unused\Redirect.cs" />
+    <Compile Include="Unused\Ticket.cs" />
+    <Compile Include="Unused\TicketTime.cs" />
+    <Compile Include="Unused\TicketType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

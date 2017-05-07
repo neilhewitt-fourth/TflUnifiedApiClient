@@ -40,15 +40,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("sourceSystemKey", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SourceSystemKey { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Street FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Street>(data);
-        }
     }
 }
 

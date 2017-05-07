@@ -19,15 +19,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("isFuture", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsFuture { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static FaresPeriod FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<FaresPeriod>(data);
-        }
     }
 }
 

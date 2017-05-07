@@ -142,15 +142,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("recurringSchedules", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public IEnumerable<RoadDisruptionSchedule> RecurringSchedules { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static RoadDisruption FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<RoadDisruption>(data);
-        }
     }
 }
 

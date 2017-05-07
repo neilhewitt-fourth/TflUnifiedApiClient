@@ -43,15 +43,6 @@
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public InstructionStepTrackType? TrackType { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static InstructionStep FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<InstructionStep>(data);
-        }
     }
 }
 

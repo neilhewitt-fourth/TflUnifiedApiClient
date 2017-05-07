@@ -17,15 +17,6 @@
         [Newtonsoft.Json.JsonProperty("url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Url { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Message FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Message>(data);
-        }
     }
 }
 

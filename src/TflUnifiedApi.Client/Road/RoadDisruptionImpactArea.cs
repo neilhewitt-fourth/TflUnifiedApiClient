@@ -25,15 +25,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("endTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EndTime { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static RoadDisruptionImpactArea FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<RoadDisruptionImpactArea>(data);
-        }
     }
 }
 

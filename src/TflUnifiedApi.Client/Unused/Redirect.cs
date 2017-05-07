@@ -11,15 +11,6 @@
         [Newtonsoft.Json.JsonProperty("active", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Active { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Redirect FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Redirect>(data);
-        }
     }
 }
 

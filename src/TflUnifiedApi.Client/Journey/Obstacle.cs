@@ -14,15 +14,6 @@
         [Newtonsoft.Json.JsonProperty("position", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Position { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Obstacle FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Obstacle>(data);
-        }
     }
 }
 

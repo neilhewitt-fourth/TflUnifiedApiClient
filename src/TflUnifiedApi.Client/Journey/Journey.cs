@@ -19,15 +19,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("legs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public IEnumerable<Leg> Legs { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Journey FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Journey>(data);
-        }
     }
 }
 

@@ -27,15 +27,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("journeyVector", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public JourneyVector JourneyVector { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static ItineraryResult FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ItineraryResult>(data);
-        }
     }
 }
 

@@ -28,15 +28,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("maxScore", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? MaxScore { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static SearchResponse FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<SearchResponse>(data);
-        }
     }
 }
 

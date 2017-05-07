@@ -14,15 +14,6 @@
         [Newtonsoft.Json.JsonProperty("displayOrder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? DisplayOrder { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static PassengerType FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<PassengerType>(data);
-        }
     }
 }
 

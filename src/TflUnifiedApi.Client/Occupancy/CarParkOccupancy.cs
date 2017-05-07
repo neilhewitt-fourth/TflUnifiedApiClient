@@ -16,15 +16,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("carParkDetailsUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CarParkDetailsUrl { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static CarParkOccupancy FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<CarParkOccupancy>(data);
-        }
     }
 }
 

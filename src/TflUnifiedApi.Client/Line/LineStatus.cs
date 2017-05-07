@@ -32,15 +32,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("disruption", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Disruption Disruption { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static LineStatus FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<LineStatus>(data);
-        }
     }
 }
 

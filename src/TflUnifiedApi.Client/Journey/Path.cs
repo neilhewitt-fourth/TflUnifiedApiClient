@@ -13,15 +13,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("elevation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public IEnumerable<JpElevation> Elevation { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Path FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Path>(data);
-        }
     }
 }
 

@@ -11,15 +11,6 @@
         [Newtonsoft.Json.JsonProperty("wellKnownBinary", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public byte[] WellKnownBinary { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static DbGeographyWellKnownValue FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<DbGeographyWellKnownValue>(data);
-        }
     }
 }
 

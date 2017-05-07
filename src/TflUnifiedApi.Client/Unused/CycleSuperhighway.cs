@@ -28,15 +28,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("modified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DateTime? Modified { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static CycleSuperhighway FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<CycleSuperhighway>(data);
-        }
     }
 }
 

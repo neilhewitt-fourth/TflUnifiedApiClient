@@ -12,15 +12,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("trainLoadings", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public IEnumerable<TrainLoading> TrainLoadings { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Crowding FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Crowding>(data);
-        }
     }
 }
 

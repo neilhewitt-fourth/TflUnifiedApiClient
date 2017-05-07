@@ -23,15 +23,6 @@
         [Newtonsoft.Json.JsonProperty("vehicleDestinationText", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string VehicleDestinationText { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static LineRouteSection FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<LineRouteSection>(data);
-        }
     }
 }
 

@@ -58,15 +58,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("singleFare", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? SingleFare { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Recommendation FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Recommendation>(data);
-        }
     }
 }
 

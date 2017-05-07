@@ -10,15 +10,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DateTime? EndDate { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static DateRange FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<DateRange>(data);
-        }
     }
 }
 

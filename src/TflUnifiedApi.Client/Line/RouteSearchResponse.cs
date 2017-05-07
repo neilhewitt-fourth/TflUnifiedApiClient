@@ -10,15 +10,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("searchMatches", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public IEnumerable<RouteSearchMatch> SearchMatches { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static RouteSearchResponse FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<RouteSearchResponse>(data);
-        }
     }
 }
 

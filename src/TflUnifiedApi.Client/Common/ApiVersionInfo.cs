@@ -17,15 +17,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("assemblies", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public IEnumerable<string> Assemblies { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static ApiVersionInfo FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ApiVersionInfo>(data);
-        }
     }    
 }
 

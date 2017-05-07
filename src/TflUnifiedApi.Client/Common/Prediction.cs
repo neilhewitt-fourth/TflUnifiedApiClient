@@ -86,15 +86,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("timing", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public PredictionTiming Timing { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Prediction FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Prediction>(data);
-        }
     }
 }
 

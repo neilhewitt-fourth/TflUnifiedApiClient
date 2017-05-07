@@ -15,15 +15,6 @@
         [Newtonsoft.Json.JsonProperty("frequency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public ServiceFrequency Frequency { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Period FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Period>(data);
-        }
     }
 }
 

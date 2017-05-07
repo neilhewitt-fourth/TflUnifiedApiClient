@@ -14,15 +14,6 @@
         [Newtonsoft.Json.JsonProperty("latest", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public TimeAdjustment Latest { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static TimeAdjustments FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<TimeAdjustments>(data);
-        }
     }
 }
 

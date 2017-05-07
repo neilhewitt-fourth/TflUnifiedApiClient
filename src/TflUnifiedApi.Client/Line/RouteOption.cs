@@ -19,15 +19,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("lineIdentifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Identifier LineIdentifier { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static RouteOption FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<RouteOption>(data);
-        }
     }
 }
 

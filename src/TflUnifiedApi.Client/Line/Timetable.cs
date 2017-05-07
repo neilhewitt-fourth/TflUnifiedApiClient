@@ -10,15 +10,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("routes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public IEnumerable<TimetableRoute> Routes { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Timetable FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Timetable>(data);
-        }
     }
 }
 

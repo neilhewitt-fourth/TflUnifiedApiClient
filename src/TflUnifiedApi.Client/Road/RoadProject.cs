@@ -57,15 +57,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("projectSummaryPageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ProjectSummaryPageUrl { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static RoadProject FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<RoadProject>(data);
-        }
     }
 }
 

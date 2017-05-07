@@ -18,15 +18,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("isNow", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsNow { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static ValidityPeriod FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ValidityPeriod>(data);
-        }
     }
 }
 

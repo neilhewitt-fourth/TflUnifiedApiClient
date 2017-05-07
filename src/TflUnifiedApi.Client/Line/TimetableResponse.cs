@@ -31,15 +31,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("statusErrorMessage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StatusErrorMessage { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static TimetableResponse FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<TimetableResponse>(data);
-        }
     }
 }
 

@@ -22,15 +22,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("received", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DateTime? Received { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static PredictionTiming FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<PredictionTiming>(data);
-        }
     }
 }
 

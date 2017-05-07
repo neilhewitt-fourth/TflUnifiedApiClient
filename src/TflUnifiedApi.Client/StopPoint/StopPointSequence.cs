@@ -34,15 +34,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public StopPointSequenceServiceType? ServiceType { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static StopPointSequence FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<StopPointSequence>(data);
-        }
     }
 }
 

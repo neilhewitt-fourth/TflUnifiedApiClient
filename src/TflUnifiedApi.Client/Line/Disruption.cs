@@ -53,15 +53,6 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("closureText", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ClosureText { get; set; }
 
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Disruption FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Disruption>(data);
-        }
     }
 }
 
