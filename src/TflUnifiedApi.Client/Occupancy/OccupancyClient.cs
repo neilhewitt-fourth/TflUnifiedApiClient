@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -34,7 +34,7 @@ namespace TflUnifiedApiClient
         /// <summary>Gets the occupancy for all car parks that have occupancy data</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiOccupancyException">A server side error occurred.</exception>
-        public Task<ObservableCollection<CarParkOccupancy>> GetAllAsync()
+        public Task<IEnumerable<CarParkOccupancy>> GetAllAsync()
         {
             return GetAllAsync(CancellationToken.None);
         }
@@ -43,9 +43,9 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiOccupancyException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<CarParkOccupancy>> GetAllAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<CarParkOccupancy>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<CarParkOccupancy>>(cancellationToken, "/Occupancy/CarPark");
+            return await GetAsync<IEnumerable<CarParkOccupancy>>(cancellationToken, "/Occupancy/CarPark");
         }
     }
 }

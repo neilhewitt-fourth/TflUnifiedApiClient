@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
-
-
     public class ApiVersionInfo
     {
         [Newtonsoft.Json.JsonProperty("label", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -17,7 +15,7 @@ namespace TflUnifiedApiClient
         public string Version { get; set; }
 
         [Newtonsoft.Json.JsonProperty("assemblies", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> Assemblies { get; set; }
+        public IEnumerable<string> Assemblies { get; set; }
 
         public string ToJson()
         {

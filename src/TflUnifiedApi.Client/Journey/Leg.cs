@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -17,7 +17,7 @@ namespace TflUnifiedApiClient
         public Instruction Instruction { get; set; }
 
         [Newtonsoft.Json.JsonProperty("obstacles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Obstacle> Obstacles { get; set; }
+        public IEnumerable<Obstacle> Obstacles { get; set; }
 
         [Newtonsoft.Json.JsonProperty("departureTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DateTime? DepartureTime { get; set; }
@@ -35,16 +35,16 @@ namespace TflUnifiedApiClient
         public Path Path { get; set; }
 
         [Newtonsoft.Json.JsonProperty("routeOptions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<RouteOption> RouteOptions { get; set; }
+        public IEnumerable<RouteOption> RouteOptions { get; set; }
 
         [Newtonsoft.Json.JsonProperty("mode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Identifier Mode { get; set; }
 
         [Newtonsoft.Json.JsonProperty("disruptions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Disruption> Disruptions { get; set; }
+        public IEnumerable<Disruption> Disruptions { get; set; }
 
         [Newtonsoft.Json.JsonProperty("plannedWorks", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<PlannedWork> PlannedWorks { get; set; }
+        public IEnumerable<PlannedWork> PlannedWorks { get; set; }
 
         [Newtonsoft.Json.JsonProperty("distance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? Distance { get; set; }

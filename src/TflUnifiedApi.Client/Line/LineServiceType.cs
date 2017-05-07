@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -8,7 +8,7 @@ namespace TflUnifiedApiClient
         public string LineName { get; set; }
 
         [Newtonsoft.Json.JsonProperty("lineSpecificServiceTypes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<LineSpecificServiceType> LineSpecificServiceTypes { get; set; }
+        public IEnumerable<LineSpecificServiceType> LineSpecificServiceTypes { get; set; }
 
         public string ToJson()
         {

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -38,11 +38,11 @@ namespace TflUnifiedApiClient
 
         /// <summary>Gets or sets the routes affected by this disruption</summary>
         [Newtonsoft.Json.JsonProperty("affectedRoutes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<RouteSection> AffectedRoutes { get; set; }
+        public IEnumerable<RouteSection> AffectedRoutes { get; set; }
 
         /// <summary>Gets or sets the stops affected by this disruption</summary>
         [Newtonsoft.Json.JsonProperty("affectedStops", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<StopPoint> AffectedStops { get; set; }
+        public IEnumerable<StopPoint> AffectedStops { get; set; }
 
         [Newtonsoft.Json.JsonProperty("isBlocking", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsBlocking { get; set; }

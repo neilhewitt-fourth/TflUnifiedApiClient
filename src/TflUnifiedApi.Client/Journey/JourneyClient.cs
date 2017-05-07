@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -15,7 +15,7 @@ namespace TflUnifiedApiClient
         /// <summary>Gets a list of all of the available journey planner modes</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiJourneyException">A server side error occurred.</exception>
-        public Task<ObservableCollection<Mode>> MetaAsync()
+        public Task<IEnumerable<Mode>> MetaAsync()
         {
             return MetaAsync(CancellationToken.None);
         }
@@ -24,9 +24,9 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiJourneyException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<Mode>> MetaAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<Mode>> MetaAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<Mode>>(cancellationToken, "/Journey/Meta/Modes");
+            return await GetAsync<IEnumerable<Mode>>(cancellationToken, "/Journey/Meta/Modes");
         }
 
         /// <summary>Perform a Journey Planner search from the parameters specified in simple types</summary>

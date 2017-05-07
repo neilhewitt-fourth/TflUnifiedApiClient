@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -8,7 +8,7 @@ namespace TflUnifiedApiClient
         public string Name { get; set; }
 
         [Newtonsoft.Json.JsonProperty("naptanIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> NaptanIds { get; set; }
+        public IEnumerable<string> NaptanIds { get; set; }
 
         [Newtonsoft.Json.JsonProperty("serviceType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ServiceType { get; set; }

@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -30,7 +30,7 @@ namespace TflUnifiedApiClient
 
         /// <summary>Geographic description of the sections of this street that are affected.</summary>
         [Newtonsoft.Json.JsonProperty("segments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<StreetSegment> Segments { get; set; }
+        public IEnumerable<StreetSegment> Segments { get; set; }
 
         /// <summary>The ID from the source system of the disruption that this street belongs to.</summary>
         [Newtonsoft.Json.JsonProperty("sourceSystemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]

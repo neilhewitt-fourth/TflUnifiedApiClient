@@ -48,9 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccidentStats\AccidentDetail.cs" />
-    <Compile Include="AccidentStats\AccidentStatsOrderedSummary.cs" />
-    <Compile Include="AccidentStats\AccidentStatsClient.cs" />
     <Compile Include="Enums\AcessibilityPreference.cs" />
     <Compile Include="Enums\BikeProficiency.cs" />
     <Compile Include="Enums\CyclePreference.cs" />
@@ -62,14 +59,11 @@
     <Compile Include="Enums\JourneyPreference.cs" />
     <Compile Include="Mode\ActiveServiceType.cs" />
     <Compile Include="Common\AdditionalProperties.cs" />
-    <Compile Include="AirQuality\AirQualityClient.cs" />
     <Compile Include="Common\ApiVersionInfo.cs" />
     <Compile Include="Occupancy\Bay.cs" />
     <Compile Include="BikePoint\BikePointClient.cs" />
-    <Compile Include="Cabwise\CabwiseClient.cs" />
     <Compile Include="Common\ApiClientBase.cs" />
     <Compile Include="Occupancy\CarParkOccupancy.cs" />
-    <Compile Include="AccidentStats\Casualty.cs" />
     <Compile Include="Enums\OverlayDirection.cs" />
     <Compile Include="Enums\PeriodType.cs" />
     <Compile Include="Enums\RoadProjectPhase.cs" />
@@ -87,7 +81,6 @@
     <Compile Include="Search\TimeAdjustments.cs" />
     <Compile Include="StopPoint\DisruptedPoint.cs" />
     <Compile Include="Line\Disruption.cs" />
-    <Compile Include="Vehicle\EmissionsSurchargeVehicle.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Common\Identifier.cs" />
     <Compile Include="Journey\Instruction.cs" />
@@ -167,11 +160,8 @@
     <Compile Include="Line\TimetableResponse.cs" />
     <Compile Include="Line\TimetableRoute.cs" />
     <Compile Include="Line\TrainLoading.cs" />
-    <Compile Include="TravelTime\TravelTimeClient.cs" />
     <Compile Include="Line\TwentyFourHourClockTime.cs" />
     <Compile Include="Line\ValidityPeriod.cs" />
-    <Compile Include="Vehicle\Vehicle.cs" />
-    <Compile Include="Vehicle\VehicleClient.cs" />
     <Compile Include="Enums\WalkingSpeed.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -8,7 +8,7 @@ namespace TflUnifiedApiClient
         public string Id { get; set; }
 
         [Newtonsoft.Json.JsonProperty("intervals", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Interval> Intervals { get; set; }
+        public IEnumerable<Interval> Intervals { get; set; }
 
         public string ToJson()
         {

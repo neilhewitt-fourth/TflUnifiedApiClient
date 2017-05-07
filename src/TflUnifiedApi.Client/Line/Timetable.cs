@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -8,7 +8,7 @@ namespace TflUnifiedApiClient
         public string DepartureStopId { get; set; }
 
         [Newtonsoft.Json.JsonProperty("routes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<TimetableRoute> Routes { get; set; }
+        public IEnumerable<TimetableRoute> Routes { get; set; }
 
         public string ToJson()
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -15,7 +15,7 @@ namespace TflUnifiedApiClient
         /// <summary>Gets the list of available StopPoint additional information categories</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<StopPointCategory>> MetaCategoriesAsync()
+        public Task<IEnumerable<StopPointCategory>> MetaCategoriesAsync()
         {
             return MetaCategoriesAsync(CancellationToken.None);
         }
@@ -24,15 +24,15 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<StopPointCategory>> MetaCategoriesAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<StopPointCategory>> MetaCategoriesAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<StopPointCategory>>(cancellationToken, "/StopPoint/Meta/Categories");
+            return await GetAsync<IEnumerable<StopPointCategory>>(cancellationToken, "/StopPoint/Meta/Categories");
         }
 
         /// <summary>Gets the list of available StopPoint types</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<string>> MetaStopTypesAsync()
+        public Task<IEnumerable<string>> MetaStopTypesAsync()
         {
             return MetaStopTypesAsync(CancellationToken.None);
         }
@@ -41,15 +41,15 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<string>> MetaStopTypesAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<string>> MetaStopTypesAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<string>>(cancellationToken, "/StopPoint/Meta/StopTypes");
+            return await GetAsync<IEnumerable<string>>(cancellationToken, "/StopPoint/Meta/StopTypes");
         }
 
         /// <summary>Gets the list of available StopPoint modes</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<Mode>> MetaModesAsync()
+        public Task<IEnumerable<Mode>> MetaModesAsync()
         {
             return MetaModesAsync(CancellationToken.None);
         }
@@ -58,35 +58,35 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<Mode>> MetaModesAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<Mode>> MetaModesAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<Mode>>(cancellationToken, "/StopPoint/Meta/Modes");
+            return await GetAsync<IEnumerable<Mode>>(cancellationToken, "/StopPoint/Meta/Modes");
         }
 
-        /// <summary>Gets a list of StopPoints corresponding to the given list of stop ids.</summary>
-        /// <param name="ids">A comma-separated list of stop point ids (station naptan code e.g. 940GZZLUASL). Max. approx. 20 ids.
+        /// <summary>Gets a list of StopPoints corresponding to the given list of stop IDs.</summary>
+        /// <param name="IDs">A comma-separated list of stop point IDs (station naptan code e.g. 940GZZLUASL). Max. approx. 20 IDs.
         ///             You can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name.</param>
-        /// <param name="includeCrowdingData">Include the crowding data (static). To Filter further use: /StopPoint/{ids}/Crowding/{line}</param>
+        /// <param name="includeCrowdingData">Include the crowding data (static). To Filter further use: /StopPoint/{IDs}/Crowding/{line}</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<StopPoint>> GetAsync(IEnumerable<string> ids, bool? includeCrowdingData)
+        public Task<IEnumerable<StopPoint>> GetAsync(IEnumerable<string> IDs, bool? includeCrowdingData)
         {
-            return GetAsync(ids, includeCrowdingData, CancellationToken.None);
+            return GetAsync(IDs, includeCrowdingData, CancellationToken.None);
         }
 
-        /// <summary>Gets a list of StopPoints corresponding to the given list of stop ids.</summary>
-        /// <param name="ids">A comma-separated list of stop point ids (station naptan code e.g. 940GZZLUASL). Max. approx. 20 ids.
+        /// <summary>Gets a list of StopPoints corresponding to the given list of stop IDs.</summary>
+        /// <param name="IDs">A comma-separated list of stop point IDs (station naptan code e.g. 940GZZLUASL). Max. approx. 20 IDs.
         ///             You can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name.</param>
-        /// <param name="includeCrowdingData">Include the crowding data (static). To Filter further use: /StopPoint/{ids}/Crowding/{line}</param>
+        /// <param name="includeCrowdingData">Include the crowding data (static). To Filter further use: /StopPoint/{IDs}/Crowding/{line}</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<StopPoint>> GetAsync(IEnumerable<string> ids, bool? includeCrowdingData, CancellationToken cancellationToken)
+        public async Task<IEnumerable<StopPoint>> GetAsync(IEnumerable<string> IDs, bool? includeCrowdingData, CancellationToken cancellationToken)
         {
-            if (ids == null)
-                throw new ArgumentNullException("ids");
+            if (IDs == null)
+                throw new ArgumentNullException("IDs");
 
-            return await GetAsync<ObservableCollection<StopPoint>>(cancellationToken, "/StopPoint/{ids}", ("ids", ids));
+            return await GetAsync<IEnumerable<StopPoint>>(cancellationToken, "/StopPoint/{IDs}", ("IDs", IDs));
         }
 
         /// <summary>Gets all the Crowding data (static) for the StopPointId, plus crowding data for a given line and optionally a particular direction.</summary>
@@ -95,7 +95,7 @@ namespace TflUnifiedApiClient
         /// <param name="direction">The direction of travel. Can be inbound or outbound.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<StopPoint>> CrowdingAsync(string id, string line, Direction direction)
+        public Task<IEnumerable<StopPoint>> CrowdingAsync(string id, string line, Direction direction)
         {
             return CrowdingAsync(id, line, direction, CancellationToken.None);
         }
@@ -107,7 +107,7 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<StopPoint>> CrowdingAsync(string id, string line, Direction direction, CancellationToken cancellationToken)
+        public async Task<IEnumerable<StopPoint>> CrowdingAsync(string id, string line, Direction direction, CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new ArgumentNullException("id");
@@ -115,7 +115,7 @@ namespace TflUnifiedApiClient
             if (line == null)
                 throw new ArgumentNullException("line");
 
-            return await GetAsync<ObservableCollection<StopPoint>>(cancellationToken, "/StopPoint/{id}/Crowding/{line}", ("id", id), ("line", line));
+            return await GetAsync<IEnumerable<StopPoint>>(cancellationToken, "/StopPoint/{id}/Crowding/{line}", ("id", id), ("line", line));
         }
 
         /// <summary>Gets all stop points of a given type</summary>
@@ -123,7 +123,7 @@ namespace TflUnifiedApiClient
         ///             A list of valid stop types can be obtained from the StopPoint/meta/stoptypes endpoint.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<StopPoint>> GetByTypeAsync(IEnumerable<string> types)
+        public Task<IEnumerable<StopPoint>> GetByTypeAsync(IEnumerable<string> types)
         {
             return GetByTypeAsync(types, CancellationToken.None);
         }
@@ -134,12 +134,12 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<StopPoint>> GetByTypeAsync(IEnumerable<string> types, CancellationToken cancellationToken)
+        public async Task<IEnumerable<StopPoint>> GetByTypeAsync(IEnumerable<string> types, CancellationToken cancellationToken)
         {
             if (types == null)
                 throw new ArgumentNullException("types");
 
-            return await GetAsync<ObservableCollection<StopPoint>>(cancellationToken, "/StopPoint/Type/{types}", ("types", types));
+            return await GetAsync<IEnumerable<StopPoint>>(cancellationToken, "/StopPoint/Type/{types}", ("types", types));
         }
 
         /// <summary>Gets the service types for a given stoppoint</summary>
@@ -148,7 +148,7 @@ namespace TflUnifiedApiClient
         /// <param name="modes">The modes which the lines are relevant to (all if empty)</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<LineServiceType>> GetServiceTypesAsync(string id, IEnumerable<string> lineIds, IEnumerable<string> modes)
+        public Task<IEnumerable<LineServiceType>> GetServiceTypesAsync(string id, IEnumerable<string> lineIds, IEnumerable<string> modes)
         {
             return GetServiceTypesAsync(id, lineIds, modes, CancellationToken.None);
         }
@@ -160,19 +160,19 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<LineServiceType>> GetServiceTypesAsync(string id, IEnumerable<string> lineIds, IEnumerable<string> modes, CancellationToken cancellationToken)
+        public async Task<IEnumerable<LineServiceType>> GetServiceTypesAsync(string id, IEnumerable<string> lineIds, IEnumerable<string> modes, CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new ArgumentNullException("id");
 
-            return await GetAsync<ObservableCollection<LineServiceType>>(cancellationToken, "/StopPoint/ServiceTypes", ("id", id), ("lineIds", lineIds), ("modes", modes));
+            return await GetAsync<IEnumerable<LineServiceType>>(cancellationToken, "/StopPoint/ServiceTypes", ("id", id), ("lineIds", lineIds), ("modes", modes));
         }
 
         /// <summary>Gets the list of arrival predictions for the given stop point id</summary>
         /// <param name="id">A StopPoint id (station naptan code e.g. 940GZZLUASL, you can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name)</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<Prediction>> ArrivalsAsync(string id)
+        public Task<IEnumerable<Prediction>> ArrivalsAsync(string id)
         {
             return ArrivalsAsync(id, CancellationToken.None);
         }
@@ -182,12 +182,12 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<Prediction>> ArrivalsAsync(string id, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Prediction>> ArrivalsAsync(string id, CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new ArgumentNullException("id");
 
-            return await GetAsync<ObservableCollection<Prediction>>(cancellationToken, "/StopPoint/{id}/Arrivals", ("id", id));
+            return await GetAsync<IEnumerable<Prediction>>(cancellationToken, "/StopPoint/{id}/Arrivals", ("id", id));
         }
 
         /// <summary>Gets Stopoints that are reachable from a station/line combination.</summary>
@@ -196,7 +196,7 @@ namespace TflUnifiedApiClient
         /// <param name="serviceTypes">A comma-separated list of service types to filter on. If not specified. Supported values: Regular, Night. Defaulted to 'Regular' if not specified</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<StopPoint>> ReachableFromAsync(string id, string lineId, IEnumerable<ServiceType> serviceTypes)
+        public Task<IEnumerable<StopPoint>> ReachableFromAsync(string id, string lineId, IEnumerable<ServiceType> serviceTypes)
         {
             return ReachableFromAsync(id, lineId, serviceTypes, CancellationToken.None);
         }
@@ -208,7 +208,7 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<StopPoint>> ReachableFromAsync(string id, string lineId, IEnumerable<ServiceType> serviceTypes, CancellationToken cancellationToken)
+        public async Task<IEnumerable<StopPoint>> ReachableFromAsync(string id, string lineId, IEnumerable<ServiceType> serviceTypes, CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new ArgumentNullException("id");
@@ -216,38 +216,38 @@ namespace TflUnifiedApiClient
             if (lineId == null)
                 throw new ArgumentNullException("lineId");
 
-            return await GetAsync<ObservableCollection<StopPoint>>(cancellationToken, "/StopPoint/{id}/CanReachOnLine/{lineId}", ("id", id), ("lineId", lineId));
+            return await GetAsync<IEnumerable<StopPoint>>(cancellationToken, "/StopPoint/{id}/CanReachOnLine/{lineId}", ("id", id), ("lineId", lineId));
         }
 
-        /// <summary>Returns the route sections for all the lines that service the given stop point ids</summary>
+        /// <summary>Returns the route sections for all the lines that service the given stop point IDs</summary>
         /// <param name="id">A stop point id (station naptan codes e.g. 940GZZLUASL, you can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name)</param>
         /// <param name="serviceTypes">A comma-separated list of service types to filter on. If not specified. Supported values: Regular, Night. Defaulted to 'Regular' if not specified</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<StopPointRouteSection>> RouteAsync(string id, IEnumerable<ServiceType> serviceTypes)
+        public Task<IEnumerable<StopPointRouteSection>> RouteAsync(string id, IEnumerable<ServiceType> serviceTypes)
         {
             return RouteAsync(id, serviceTypes, CancellationToken.None);
         }
 
-        /// <summary>Returns the route sections for all the lines that service the given stop point ids</summary>
+        /// <summary>Returns the route sections for all the lines that service the given stop point IDs</summary>
         /// <param name="id">A stop point id (station naptan codes e.g. 940GZZLUASL, you can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name)</param>
         /// <param name="serviceTypes">A comma-separated list of service types to filter on. If not specified. Supported values: Regular, Night. Defaulted to 'Regular' if not specified</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<StopPointRouteSection>> RouteAsync(string id, IEnumerable<ServiceType> serviceTypes, CancellationToken cancellationToken)
+        public async Task<IEnumerable<StopPointRouteSection>> RouteAsync(string id, IEnumerable<ServiceType> serviceTypes, CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new ArgumentNullException("id");
 
-            return await GetAsync<ObservableCollection<StopPointRouteSection>>(cancellationToken, "/StopPoint/{id}/Route", ("id", id), ("serviceTypes", serviceTypes));
+            return await GetAsync<IEnumerable<StopPointRouteSection>>(cancellationToken, "/StopPoint/{id}/Route", ("id", id), ("serviceTypes", serviceTypes));
         }
 
         /// <summary>Gets a distinct list of disrupted stop points for the given modes</summary>
         /// <param name="modes">A comma-seperated list of modes e.g. tube,dlr</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<DisruptedPoint>> DisruptionByModeAsync(IEnumerable<string> modes, bool? includeRouteBlockedStops)
+        public Task<IEnumerable<DisruptedPoint>> DisruptionByModeAsync(IEnumerable<string> modes, bool? includeRouteBlockedStops)
         {
             return DisruptionByModeAsync(modes, includeRouteBlockedStops, CancellationToken.None);
         }
@@ -257,43 +257,43 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<DisruptedPoint>> DisruptionByModeAsync(IEnumerable<string> modes, bool? includeRouteBlockedStops, CancellationToken cancellationToken)
+        public async Task<IEnumerable<DisruptedPoint>> DisruptionByModeAsync(IEnumerable<string> modes, bool? includeRouteBlockedStops, CancellationToken cancellationToken)
         {
             if (modes == null)
                 throw new ArgumentNullException("modes");
 
-            return await GetAsync<ObservableCollection<DisruptedPoint>>(cancellationToken, "/StopPoint/Mode/{modes}/Disruption", ("modes", modes), ("includeRouteBlockedStops", includeRouteBlockedStops));
+            return await GetAsync<IEnumerable<DisruptedPoint>>(cancellationToken, "/StopPoint/Mode/{modes}/Disruption", ("modes", modes), ("includeRouteBlockedStops", includeRouteBlockedStops));
         }
 
         /// <summary>Gets all disruptions for the specified StopPointId, plus disruptions for any child Naptan records it may have.</summary>
-        /// <param name="ids">A comma-seperated list of stop point ids. Max. approx. 20 ids.
+        /// <param name="IDs">A comma-seperated list of stop point IDs. Max. approx. 20 IDs.
         ///             You can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name.</param>
         /// <param name="getFamily">Specify true to return disruptions for entire family, or false to return disruptions for just this stop point. Defaults to false.</param>
         /// <param name="flattenResponse">Specify true to associate all disruptions with parent stop point. (Only applicable when getFamily is true).</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<DisruptedPoint>> DisruptionAsync(IEnumerable<string> ids, bool? getFamily, bool? includeRouteBlockedStops, bool? flattenResponse)
+        public Task<IEnumerable<DisruptedPoint>> DisruptionAsync(IEnumerable<string> IDs, bool? getFamily, bool? includeRouteBlockedStops, bool? flattenResponse)
         {
-            return DisruptionAsync(ids, getFamily, includeRouteBlockedStops, flattenResponse, CancellationToken.None);
+            return DisruptionAsync(IDs, getFamily, includeRouteBlockedStops, flattenResponse, CancellationToken.None);
         }
 
         /// <summary>Gets all disruptions for the specified StopPointId, plus disruptions for any child Naptan records it may have.</summary>
-        /// <param name="ids">A comma-seperated list of stop point ids. Max. approx. 20 ids.
+        /// <param name="IDs">A comma-seperated list of stop point IDs. Max. approx. 20 IDs.
         ///             You can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name.</param>
         /// <param name="getFamily">Specify true to return disruptions for entire family, or false to return disruptions for just this stop point. Defaults to false.</param>
         /// <param name="flattenResponse">Specify true to associate all disruptions with parent stop point. (Only applicable when getFamily is true).</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<DisruptedPoint>> DisruptionAsync(IEnumerable<string> ids, bool? getFamily, bool? includeRouteBlockedStops, bool? flattenResponse, CancellationToken cancellationToken)
+        public async Task<IEnumerable<DisruptedPoint>> DisruptionAsync(IEnumerable<string> IDs, bool? getFamily, bool? includeRouteBlockedStops, bool? flattenResponse, CancellationToken cancellationToken)
         {
-            if (ids == null)
-                throw new ArgumentNullException("ids");
+            if (IDs == null)
+                throw new ArgumentNullException("IDs");
 
-            return await GetAsync<ObservableCollection<DisruptedPoint>>(cancellationToken, "/StopPoint/{ids}/Disruption", ("ids", ids), ("getFamily", getFamily), ("includeRouteBlockedStops", includeRouteBlockedStops), ("flattenResponse", flattenResponse));
+            return await GetAsync<IEnumerable<DisruptedPoint>>(cancellationToken, "/StopPoint/{IDs}/Disruption", ("IDs", IDs), ("getFamily", getFamily), ("includeRouteBlockedStops", includeRouteBlockedStops), ("flattenResponse", flattenResponse));
         }
 
-        /// <summary>Returns the canonical direction, "inbound" or "outbound", for a given pair of stop point Ids in the direction from -&gt; to.</summary>
+        /// <summary>Returns the canonical direction, "inbound" or "outbound", for a given pair of stop point IDs in the direction from -&gt; to.</summary>
         /// <param name="id">Originating stop id (station naptan code e.g. 940GZZLUASL, you can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name)</param>
         /// <param name="toStopPointId">Destination stop id (station naptan code e.g. 940GZZLUASL, you can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name)</param>
         /// <param name="lineId">Optional line id filter e.g. victoria</param>
@@ -304,7 +304,7 @@ namespace TflUnifiedApiClient
             return DirectionAsync(id, toStopPointId, lineId, CancellationToken.None);
         }
 
-        /// <summary>Returns the canonical direction, "inbound" or "outbound", for a given pair of stop point Ids in the direction from -&gt; to.</summary>
+        /// <summary>Returns the canonical direction, "inbound" or "outbound", for a given pair of stop point IDs in the direction from -&gt; to.</summary>
         /// <param name="id">Originating stop id (station naptan code e.g. 940GZZLUASL, you can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name)</param>
         /// <param name="toStopPointId">Destination stop id (station naptan code e.g. 940GZZLUASL, you can use /StopPoint/Search/{query} endpoint to find a stop point id from a station name)</param>
         /// <param name="lineId">Optional line id filter e.g. victoria</param>
@@ -458,7 +458,7 @@ namespace TflUnifiedApiClient
         /// <param name="stopPointId">stopPointId is required to get the taxi ranks.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<Place>> GetTaxiRanksByIdsAsync(string stopPointId)
+        public Task<IEnumerable<Place>> GetTaxiRanksByIdsAsync(string stopPointId)
         {
             return GetTaxiRanksByIdsAsync(stopPointId, CancellationToken.None);
         }
@@ -468,12 +468,12 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiStopPointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<Place>> GetTaxiRanksByIdsAsync(string stopPointId, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Place>> GetTaxiRanksByIdsAsync(string stopPointId, CancellationToken cancellationToken)
         {
             if (stopPointId == null)
                 throw new ArgumentNullException("stopPointId");
 
-            return await GetAsync<ObservableCollection<Place>>(cancellationToken, "/StopPoint/{stopPointId}/TaxiRanks", ("stopPointId", stopPointId));
+            return await GetAsync<IEnumerable<Place>>(cancellationToken, "/StopPoint/{stopPointId}/TaxiRanks", ("stopPointId", stopPointId));
         }
     }
 }

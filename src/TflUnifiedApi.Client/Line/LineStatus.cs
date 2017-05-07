@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -27,7 +27,7 @@ namespace TflUnifiedApiClient
         public DateTime? Modified { get; set; }
 
         [Newtonsoft.Json.JsonProperty("validityPeriods", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<ValidityPeriod> ValidityPeriods { get; set; }
+        public IEnumerable<ValidityPeriod> ValidityPeriods { get; set; }
 
         [Newtonsoft.Json.JsonProperty("disruption", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Disruption Disruption { get; set; }

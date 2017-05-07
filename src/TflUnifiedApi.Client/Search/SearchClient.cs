@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -60,7 +60,7 @@ namespace TflUnifiedApiClient
         /// <summary>Gets the available searchProvider names.</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiSearchException">A server side error occurred.</exception>
-        public Task<ObservableCollection<string>> MetaSearchProvidersAsync()
+        public Task<IEnumerable<string>> MetaSearchProvidersAsync()
         {
             return MetaSearchProvidersAsync(CancellationToken.None);
         }
@@ -69,15 +69,15 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiSearchException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<string>> MetaSearchProvidersAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<string>> MetaSearchProvidersAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<string>>(cancellationToken, "/Search/Meta/SearchProviders");
+            return await GetAsync<IEnumerable<string>>(cancellationToken, "/Search/Meta/SearchProviders");
         }
 
         /// <summary>Gets the available search categories.</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiSearchException">A server side error occurred.</exception>
-        public Task<ObservableCollection<string>> MetaCategoriesAsync()
+        public Task<IEnumerable<string>> MetaCategoriesAsync()
         {
             return MetaCategoriesAsync(CancellationToken.None);
         }
@@ -86,15 +86,15 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiSearchException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<string>> MetaCategoriesAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<string>> MetaCategoriesAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<string>>(cancellationToken, "/Search/Meta/Categories");
+            return await GetAsync<IEnumerable<string>>(cancellationToken, "/Search/Meta/Categories");
         }
 
         /// <summary>Gets the available sorting options.</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiSearchException">A server side error occurred.</exception>
-        public Task<ObservableCollection<string>> MetaSortsAsync()
+        public Task<IEnumerable<string>> MetaSortsAsync()
         {
             return MetaSortsAsync(CancellationToken.None);
         }
@@ -103,9 +103,9 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiSearchException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<string>> MetaSortsAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<string>> MetaSortsAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<string>>(cancellationToken, "/Search/Meta/Sorts");
+            return await GetAsync<IEnumerable<string>>(cancellationToken, "/Search/Meta/Sorts");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -37,7 +37,7 @@ namespace TflUnifiedApiClient
         public string DestinationName { get; set; }
 
         [Newtonsoft.Json.JsonProperty("routeSectionNaptanEntrySequence", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<RouteSectionNaptanEntrySequence> RouteSectionNaptanEntrySequence { get; set; }
+        public IEnumerable<RouteSectionNaptanEntrySequence> RouteSectionNaptanEntrySequence { get; set; }
 
         public string ToJson()
         {

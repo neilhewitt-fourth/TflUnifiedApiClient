@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -8,10 +8,10 @@ namespace TflUnifiedApiClient
         public string LineString { get; set; }
 
         [Newtonsoft.Json.JsonProperty("stopPoints", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Identifier> StopPoints { get; set; }
+        public IEnumerable<Identifier> StopPoints { get; set; }
 
         [Newtonsoft.Json.JsonProperty("elevation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<JpElevation> Elevation { get; set; }
+        public IEnumerable<JpElevation> Elevation { get; set; }
 
         public string ToJson()
         {

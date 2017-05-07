@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -17,7 +17,7 @@ namespace TflUnifiedApiClient
         public DateTime? ArrivalDateTime { get; set; }
 
         [Newtonsoft.Json.JsonProperty("legs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Leg> Legs { get; set; }
+        public IEnumerable<Leg> Legs { get; set; }
 
         public string ToJson()
         {

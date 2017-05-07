@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -48,9 +48,9 @@ namespace TflUnifiedApiClient
         [Newtonsoft.Json.JsonProperty("currentUpdateDateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DateTime? CurrentUpdateDateTime { get; set; }
 
-        /// <summary>The Ids of affected corridors, if any.</summary>
+        /// <summary>The IDs of affected corridors, if any.</summary>
         [Newtonsoft.Json.JsonProperty("corridorIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> CorridorIds { get; set; }
+        public IEnumerable<string> CorridorIds { get; set; }
 
         /// <summary>The date and time which the disruption started. For a planned disruption (i.e. planned road works) this date will be in the future.
         ///             For unplanned disruptions, this will default to the date on which the disruption was first recorded, but may be adjusted by the operator.</summary>
@@ -100,7 +100,7 @@ namespace TflUnifiedApiClient
 
         /// <summary>A collection of zero or more streets affected by the disruption.</summary>
         [Newtonsoft.Json.JsonProperty("streets", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Street> Streets { get; set; }
+        public IEnumerable<Street> Streets { get; set; }
 
         /// <summary>True if the disruption is planned on a future date that is open to change</summary>
         [Newtonsoft.Json.JsonProperty("isProvisional", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -134,13 +134,13 @@ namespace TflUnifiedApiClient
         public string TimeFrame { get; set; }
 
         [Newtonsoft.Json.JsonProperty("roadDisruptionLines", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<RoadDisruptionLine> RoadDisruptionLines { get; set; }
+        public IEnumerable<RoadDisruptionLine> RoadDisruptionLines { get; set; }
 
         [Newtonsoft.Json.JsonProperty("roadDisruptionImpactAreas", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<RoadDisruptionImpactArea> RoadDisruptionImpactAreas { get; set; }
+        public IEnumerable<RoadDisruptionImpactArea> RoadDisruptionImpactAreas { get; set; }
 
         [Newtonsoft.Json.JsonProperty("recurringSchedules", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<RoadDisruptionSchedule> RecurringSchedules { get; set; }
+        public IEnumerable<RoadDisruptionSchedule> RecurringSchedules { get; set; }
 
         public string ToJson()
         {

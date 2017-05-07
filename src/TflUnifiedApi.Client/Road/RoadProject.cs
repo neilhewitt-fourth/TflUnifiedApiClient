@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -36,7 +36,7 @@ namespace TflUnifiedApiClient
         public DateTime? ConstructionEndDate { get; set; }
 
         [Newtonsoft.Json.JsonProperty("boroughsBenefited", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> BoroughsBenefited { get; set; }
+        public IEnumerable<string> BoroughsBenefited { get; set; }
 
         [Newtonsoft.Json.JsonProperty("cycleSuperhighwayId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CycleSuperhighwayId { get; set; }

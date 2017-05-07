@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -17,10 +17,10 @@ namespace TflUnifiedApiClient
         public string PdfUrl { get; set; }
 
         [Newtonsoft.Json.JsonProperty("stations", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<MatchedStop> Stations { get; set; }
+        public IEnumerable<MatchedStop> Stations { get; set; }
 
         [Newtonsoft.Json.JsonProperty("stops", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<MatchedStop> Stops { get; set; }
+        public IEnumerable<MatchedStop> Stops { get; set; }
 
         [Newtonsoft.Json.JsonProperty("timetable", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Timetable Timetable { get; set; }

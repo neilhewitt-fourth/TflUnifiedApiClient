@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -11,7 +11,7 @@ namespace TflUnifiedApiClient
         public string Detailed { get; set; }
 
         [Newtonsoft.Json.JsonProperty("steps", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<InstructionStep> Steps { get; set; }
+        public IEnumerable<InstructionStep> Steps { get; set; }
 
         public string ToJson()
         {

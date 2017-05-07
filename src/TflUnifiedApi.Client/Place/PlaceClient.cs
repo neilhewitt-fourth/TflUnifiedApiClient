@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -15,7 +15,7 @@ namespace TflUnifiedApiClient
         /// <summary>Gets a list of all of the available place property categories and keys.</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiPlaceException">A server side error occurred.</exception>
-        public Task<ObservableCollection<PlaceCategory>> MetaCategoriesAsync()
+        public Task<IEnumerable<PlaceCategory>> MetaCategoriesAsync()
         {
             return MetaCategoriesAsync(CancellationToken.None);
         }
@@ -24,15 +24,15 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiPlaceException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<PlaceCategory>> MetaCategoriesAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<PlaceCategory>> MetaCategoriesAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<PlaceCategory>>(cancellationToken, "/Place/Meta/Categories");
+            return await GetAsync<IEnumerable<PlaceCategory>>(cancellationToken, "/Place/Meta/Categories");
         }
 
         /// <summary>Gets a list of the available types of Place.</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiPlaceException">A server side error occurred.</exception>
-        public Task<ObservableCollection<PlaceCategory>> MetaPlaceTypesAsync()
+        public Task<IEnumerable<PlaceCategory>> MetaPlaceTypesAsync()
         {
             return MetaPlaceTypesAsync(CancellationToken.None);
         }
@@ -41,9 +41,9 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiPlaceException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<PlaceCategory>> MetaPlaceTypesAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<PlaceCategory>> MetaPlaceTypesAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<PlaceCategory>>(cancellationToken, "/Place/Meta/PlaceTypes");
+            return await GetAsync<IEnumerable<PlaceCategory>>(cancellationToken, "/Place/Meta/PlaceTypes");
         }
 
         /// <summary>Gets the set of streets associated with a post code.</summary>
@@ -72,7 +72,7 @@ namespace TflUnifiedApiClient
         /// <param name="activeOnly">An optional parameter to limit the results to active records only (Currently only the 'VariableMessageSign' place type is supported)</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiPlaceException">A server side error occurred.</exception>
-        public Task<ObservableCollection<Place>> GetByTypeAsync(IEnumerable<string> types, bool? activeOnly)
+        public Task<IEnumerable<Place>> GetByTypeAsync(IEnumerable<string> types, bool? activeOnly)
         {
             return GetByTypeAsync(types, activeOnly, CancellationToken.None);
         }
@@ -84,36 +84,36 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiPlaceException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<Place>> GetByTypeAsync(IEnumerable<string> types, bool? activeOnly, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Place>> GetByTypeAsync(IEnumerable<string> types, bool? activeOnly, CancellationToken cancellationToken)
         {
             if (types == null)
                 throw new ArgumentNullException("types");
 
-            return await GetAsync<ObservableCollection<Place>>(cancellationToken, "/Place/Type/{types}", ("types", types));
+            return await GetAsync<IEnumerable<Place>>(cancellationToken, "/Place/Type/{types}", ("types", types));
         }
 
         /// <summary>Gets the place with the given id.</summary>
-        /// <param name="id">The id of the place, you can use the /Place/Types/{types} endpoint to get a list of places for a given type including their ids</param>
+        /// <param name="id">The id of the place, you can use the /Place/Types/{types} endpoint to get a list of places for a given type including their IDs</param>
         /// <param name="includeChildren">Defaults to false. If true child places e.g. individual charging stations at a charge point while be included, otherwise just the URLs of any child places will be returned</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiPlaceException">A server side error occurred.</exception>
-        public Task<ObservableCollection<Place>> GetAsync(string id, bool? includeChildren)
+        public Task<IEnumerable<Place>> GetAsync(string id, bool? includeChildren)
         {
             return GetAsync(id, includeChildren, CancellationToken.None);
         }
 
         /// <summary>Gets the place with the given id.</summary>
-        /// <param name="id">The id of the place, you can use the /Place/Types/{types} endpoint to get a list of places for a given type including their ids</param>
+        /// <param name="id">The id of the place, you can use the /Place/Types/{types} endpoint to get a list of places for a given type including their IDs</param>
         /// <param name="includeChildren">Defaults to false. If true child places e.g. individual charging stations at a charge point while be included, otherwise just the URLs of any child places will be returned</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiPlaceException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<Place>> GetAsync(string id, bool? includeChildren, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Place>> GetAsync(string id, bool? includeChildren, CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new ArgumentNullException("id");
 
-            return await GetAsync<ObservableCollection<Place>>(cancellationToken, "/Place/{id}", ("id", id));
+            return await GetAsync<IEnumerable<Place>>(cancellationToken, "/Place/{id}", ("id", id));
         }
 
         /// <summary>Gets the places that lie within the bounding box defined by the lat/lon of its north-west and south-east corners. Optionally filters
@@ -124,7 +124,7 @@ namespace TflUnifiedApiClient
         /// <param name="activeOnly">An optional parameter to limit the results to active records only (Currently only the 'VariableMessageSign' place type is supported)</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiPlaceException">A server side error occurred.</exception>
-        public Task<ObservableCollection<StopPoint>> GetByGeoBoxAsync(IEnumerable<string> categories, bool? includeChildren, IEnumerable<string> type, bool? activeOnly, double boundingBoxSWLat, double boundingBoxSWLon, double boundingBoxNELat, double boundingBoxNELon)
+        public Task<IEnumerable<StopPoint>> GetByGeoBoxAsync(IEnumerable<string> categories, bool? includeChildren, IEnumerable<string> type, bool? activeOnly, double boundingBoxSWLat, double boundingBoxSWLon, double boundingBoxNELat, double boundingBoxNELon)
         {
             return GetByGeoBoxAsync(categories, includeChildren, type, activeOnly, boundingBoxSWLat, boundingBoxSWLon, boundingBoxNELat, boundingBoxNELon, CancellationToken.None);
         }
@@ -138,9 +138,9 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiPlaceException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<StopPoint>> GetByGeoBoxAsync(IEnumerable<string> categories, bool? includeChildren, IEnumerable<string> type, bool? activeOnly, double boundingBoxSWLat, double boundingBoxSWLon, double boundingBoxNELat, double boundingBoxNELon, CancellationToken cancellationToken)
+        public async Task<IEnumerable<StopPoint>> GetByGeoBoxAsync(IEnumerable<string> categories, bool? includeChildren, IEnumerable<string> type, bool? activeOnly, double boundingBoxSWLat, double boundingBoxSWLon, double boundingBoxNELat, double boundingBoxNELon, CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<StopPoint>>(cancellationToken,
+            return await GetAsync<IEnumerable<StopPoint>>(cancellationToken,
                 "/Place",
                 ("categories", categories),
                 ("includeChildren", includeChildren),

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -15,7 +15,7 @@ namespace TflUnifiedApiClient
         ///             numbers which give the status of the BikePoint. A mismatch in these numbers i.e. nbDocks - (nbBikes + nbSpaces) != 0 indicates broken docks.</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiBikePointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<Place>> GetAllAsync()
+        public Task<IEnumerable<Place>> GetAllAsync()
         {
             return GetAllAsync(CancellationToken.None);
         }
@@ -25,13 +25,13 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiBikePointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<Place>> GetAllAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<Place>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<Place>>(cancellationToken, "/BikePoint");
+            return await GetAsync<IEnumerable<Place>>(cancellationToken, "/BikePoint");
         }
 
         /// <summary>Gets the bike point with the given id.</summary>
-        /// <param name="id">A bike point id (a list of ids can be obtained from the above BikePoint call)</param>
+        /// <param name="id">A bike point id (a list of IDs can be obtained from the above BikePoint call)</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiBikePointException">A server side error occurred.</exception>
         public Task<Place> GetAsync(string id)
@@ -40,7 +40,7 @@ namespace TflUnifiedApiClient
         }
 
         /// <summary>Gets the bike point with the given id.</summary>
-        /// <param name="id">A bike point id (a list of ids can be obtained from the above BikePoint call)</param>
+        /// <param name="id">A bike point id (a list of IDs can be obtained from the above BikePoint call)</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiBikePointException">A server side error occurred.</exception>
@@ -58,7 +58,7 @@ namespace TflUnifiedApiClient
         /// <param name="query">The search term e.g. "St. James"</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiBikePointException">A server side error occurred.</exception>
-        public Task<ObservableCollection<Place>> SearchAsync(string query)
+        public Task<IEnumerable<Place>> SearchAsync(string query)
         {
             return SearchAsync(query, CancellationToken.None);
         }
@@ -70,12 +70,12 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiBikePointException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<Place>> SearchAsync(string query, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Place>> SearchAsync(string query, CancellationToken cancellationToken)
         {
             if (query == null)
                 throw new ArgumentNullException("query");
 
-            return await GetAsync<ObservableCollection<Place>>(cancellationToken, "/BikePoint/Search", ("query", query));
+            return await GetAsync<IEnumerable<Place>>(cancellationToken, "/BikePoint/Search", ("query", query));
         }
     }
 }

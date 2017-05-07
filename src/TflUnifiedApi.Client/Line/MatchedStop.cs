@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -26,7 +26,7 @@ namespace TflUnifiedApiClient
         public string Towards { get; set; }
 
         [Newtonsoft.Json.JsonProperty("modes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> Modes { get; set; }
+        public IEnumerable<string> Modes { get; set; }
 
         [Newtonsoft.Json.JsonProperty("stopType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StopType { get; set; }
@@ -44,7 +44,7 @@ namespace TflUnifiedApiClient
         public bool? HasDisruption { get; set; }
 
         [Newtonsoft.Json.JsonProperty("lines", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Identifier> Lines { get; set; }
+        public IEnumerable<Identifier> Lines { get; set; }
 
         [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Status { get; set; }

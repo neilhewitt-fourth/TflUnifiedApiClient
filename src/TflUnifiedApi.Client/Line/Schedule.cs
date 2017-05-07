@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -8,7 +8,7 @@ namespace TflUnifiedApiClient
         public string Name { get; set; }
 
         [Newtonsoft.Json.JsonProperty("knownJourneys", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<KnownJourney> KnownJourneys { get; set; }
+        public IEnumerable<KnownJourney> KnownJourneys { get; set; }
 
         [Newtonsoft.Json.JsonProperty("firstJourney", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public KnownJourney FirstJourney { get; set; }
@@ -17,7 +17,7 @@ namespace TflUnifiedApiClient
         public KnownJourney LastJourney { get; set; }
 
         [Newtonsoft.Json.JsonProperty("periods", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Period> Periods { get; set; }
+        public IEnumerable<Period> Periods { get; set; }
 
         public string ToJson()
         {

@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -8,7 +8,7 @@ namespace TflUnifiedApiClient
         public string Category { get; set; }
 
         [Newtonsoft.Json.JsonProperty("availableKeys", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> AvailableKeys { get; set; }
+        public IEnumerable<string> AvailableKeys { get; set; }
 
         public string ToJson()
         {

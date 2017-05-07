@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -8,11 +8,11 @@ namespace TflUnifiedApiClient
     {
         /// <summary>The centre latitude/longitude of this list of StopPoints</summary>
         [Newtonsoft.Json.JsonProperty("centrePoint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<double> CentrePoint { get; set; }
+        public IEnumerable<double> CentrePoint { get; set; }
 
         /// <summary>Collection of stop points</summary>
         [Newtonsoft.Json.JsonProperty("stopPoints", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<StopPoint> StopPoints { get; set; }
+        public IEnumerable<StopPoint> StopPoints { get; set; }
 
         /// <summary>The maximum size of the page in this response i.e. the maximum number of StopPoints</summary>
         [Newtonsoft.Json.JsonProperty("pageSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]

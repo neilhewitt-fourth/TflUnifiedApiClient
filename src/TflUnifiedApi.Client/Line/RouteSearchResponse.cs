@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -8,7 +8,7 @@ namespace TflUnifiedApiClient
         public string Input { get; set; }
 
         [Newtonsoft.Json.JsonProperty("searchMatches", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<RouteSearchMatch> SearchMatches { get; set; }
+        public IEnumerable<RouteSearchMatch> SearchMatches { get; set; }
 
         public string ToJson()
         {

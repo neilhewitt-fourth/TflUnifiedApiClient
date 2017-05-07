@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -11,7 +11,7 @@ namespace TflUnifiedApiClient
         public string StationAtcoCode { get; set; }
 
         [Newtonsoft.Json.JsonProperty("lineIdentifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> LineIdentifier { get; set; }
+        public IEnumerable<string> LineIdentifier { get; set; }
 
         public string ToJson()
         {

@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -23,7 +23,7 @@ namespace TflUnifiedApiClient
         public int? Total { get; set; }
 
         [Newtonsoft.Json.JsonProperty("matches", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<SearchMatch> Matches { get; set; }
+        public IEnumerable<SearchMatch> Matches { get; set; }
 
         [Newtonsoft.Json.JsonProperty("maxScore", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? MaxScore { get; set; }

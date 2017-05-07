@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -15,7 +15,7 @@ namespace TflUnifiedApiClient
         public string ModeName { get; set; }
 
         [Newtonsoft.Json.JsonProperty("disruptions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Disruption> Disruptions { get; set; }
+        public IEnumerable<Disruption> Disruptions { get; set; }
 
         [Newtonsoft.Json.JsonProperty("created", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DateTime? Created { get; set; }
@@ -24,13 +24,13 @@ namespace TflUnifiedApiClient
         public DateTime? Modified { get; set; }
 
         [Newtonsoft.Json.JsonProperty("lineStatuses", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<LineStatus> LineStatuses { get; set; }
+        public IEnumerable<LineStatus> LineStatuses { get; set; }
 
         [Newtonsoft.Json.JsonProperty("routeSections", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<MatchedRoute> RouteSections { get; set; }
+        public IEnumerable<MatchedRoute> RouteSections { get; set; }
 
         [Newtonsoft.Json.JsonProperty("serviceTypes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<LineServiceTypeInfo> ServiceTypes { get; set; }
+        public IEnumerable<LineServiceTypeInfo> ServiceTypes { get; set; }
 
         [Newtonsoft.Json.JsonProperty("crowding", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Crowding Crowding { get; set; }

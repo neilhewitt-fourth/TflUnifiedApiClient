@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -16,7 +16,7 @@ namespace TflUnifiedApiClient
         /// <summary>Gets all roads managed by TfL</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public Task<ObservableCollection<RoadCorridor>> GetAllAsync()
+        public Task<IEnumerable<RoadCorridor>> GetAllAsync()
         {
             return GetAllAsync(CancellationToken.None);
         }
@@ -25,70 +25,70 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<RoadCorridor>> GetAllAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<RoadCorridor>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<RoadCorridor>>(cancellationToken, "/Road");
+            return await GetAsync<IEnumerable<RoadCorridor>>(cancellationToken, "/Road");
         }
 
         /// <summary>Gets the road with the specified id (e.g. A1)</summary>
-        /// <param name="ids">Comma-separated list of road identifiers e.g. "A406, A2" (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
+        /// <param name="IDs">Comma-separated list of road identifiers e.g. "A406, A2" (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public Task<ObservableCollection<RoadCorridor>> GetAsync(IEnumerable<string> ids)
+        public Task<IEnumerable<RoadCorridor>> GetAsync(IEnumerable<string> IDs)
         {
-            return GetAsync(ids, CancellationToken.None);
+            return GetAsync(IDs, CancellationToken.None);
         }
 
         /// <summary>Gets the road with the specified id (e.g. A1)</summary>
-        /// <param name="ids">Comma-separated list of road identifiers e.g. "A406, A2" (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
+        /// <param name="IDs">Comma-separated list of road identifiers e.g. "A406, A2" (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<RoadCorridor>> GetAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
+        public async Task<IEnumerable<RoadCorridor>> GetAsync(IEnumerable<string> IDs, CancellationToken cancellationToken)
         {
-            if (ids == null)
-                throw new ArgumentNullException("ids");
+            if (IDs == null)
+                throw new ArgumentNullException("IDs");
 
-            return await GetAsync<ObservableCollection<RoadCorridor>>(cancellationToken, "/Road", ("ids", ids));
+            return await GetAsync<IEnumerable<RoadCorridor>>(cancellationToken, "/Road", ("IDs", IDs));
         }
 
         /// <summary>Gets the specified roads with the status aggregated over the date range specified, or now until the end of today if no dates are passed.</summary>
-        /// <param name="ids">Comma-separated list of road identifiers e.g. "A406, A2" or use "all" to ignore id filter (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
+        /// <param name="IDs">Comma-separated list of road identifiers e.g. "A406, A2" or use "all" to ignore id filter (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public Task<ObservableCollection<RoadCorridor>> StatusAsync(IEnumerable<string> ids, DateTime? dateRangeNullablestartDate, DateTime? dateRangeNullableendDate)
+        public Task<IEnumerable<RoadCorridor>> StatusAsync(IEnumerable<string> IDs, DateTime? dateRangeNullablestartDate, DateTime? dateRangeNullableendDate)
         {
-            return StatusAsync(ids, dateRangeNullablestartDate, dateRangeNullableendDate, CancellationToken.None);
+            return StatusAsync(IDs, dateRangeNullablestartDate, dateRangeNullableendDate, CancellationToken.None);
         }
 
         /// <summary>Gets the specified roads with the status aggregated over the date range specified, or now until the end of today if no dates are passed.</summary>
-        /// <param name="ids">Comma-separated list of road identifiers e.g. "A406, A2" or use "all" to ignore id filter (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
+        /// <param name="IDs">Comma-separated list of road identifiers e.g. "A406, A2" or use "all" to ignore id filter (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<RoadCorridor>> StatusAsync(IEnumerable<string> ids, DateTime? startDate, DateTime? dateRangeNullableendDate, CancellationToken cancellationToken)
+        public async Task<IEnumerable<RoadCorridor>> StatusAsync(IEnumerable<string> IDs, DateTime? startDate, DateTime? dateRangeNullableendDate, CancellationToken cancellationToken)
         {
-            if (ids == null)
-                throw new ArgumentNullException("ids");
+            if (IDs == null)
+                throw new ArgumentNullException("IDs");
 
-            return await GetAsync<ObservableCollection<RoadCorridor>>(cancellationToken, "/Road/{ids}/Status", ("ids", ids), ("dateRangeNullableStartDate", startDate), ("dateRangeNullableEndDate", dateRangeNullableendDate)); ;
+            return await GetAsync<IEnumerable<RoadCorridor>>(cancellationToken, "/Road/{IDs}/Status", ("IDs", IDs), ("dateRangeNullableStartDate", startDate), ("dateRangeNullableEndDate", dateRangeNullableendDate)); ;
         }
 
-        /// <summary>Get active disruptions, filtered by road ids</summary>
-        /// <param name="ids">Comma-separated list of road identifiers e.g. "A406, A2" use all for all to ignore id filter (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
+        /// <summary>Get active disruptions, filtered by road IDs</summary>
+        /// <param name="IDs">Comma-separated list of road identifiers e.g. "A406, A2" use all for all to ignore id filter (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
         /// <param name="stripContent">Optional, defaults to false. When true, removes every property/node except for id, point, severity, severityDescription, startDate, endDate, corridor details, location, comments and streets</param>
         /// <param name="severities">an optional list of Severity names to filter on (a valid list of severities can be obtained from the /Road/Meta/severities endpoint)</param>
         /// <param name="categories">an optional list of category names to filter on (a valid list of categories can be obtained from the /Road/Meta/categories endpoint)</param>
         /// <param name="closures">Optional, defaults to true. When true, always includes disruptions that have road closures, regardless of the severity filter. When false, the severity filter works as normal.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public Task<ObservableCollection<RoadDisruption>> DisruptionAsync(IEnumerable<string> ids, bool? stripContent, IEnumerable<string> severities, IEnumerable<string> categories, bool? closures)
+        public Task<IEnumerable<RoadDisruption>> DisruptionAsync(IEnumerable<string> IDs, bool? stripContent, IEnumerable<string> severities, IEnumerable<string> categories, bool? closures)
         {
-            return DisruptionAsync(ids, stripContent, severities, categories, closures, CancellationToken.None);
+            return DisruptionAsync(IDs, stripContent, severities, categories, closures, CancellationToken.None);
         }
 
-        /// <summary>Get active disruptions, filtered by road ids</summary>
-        /// <param name="ids">Comma-separated list of road identifiers e.g. "A406, A2" use all for all to ignore id filter (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
+        /// <summary>Get active disruptions, filtered by road IDs</summary>
+        /// <param name="IDs">Comma-separated list of road identifiers e.g. "A406, A2" use all for all to ignore id filter (a full list of supported road identifiers can be found at the /Road/ endpoint)</param>
         /// <param name="stripContent">Optional, defaults to false. When true, removes every property/node except for id, point, severity, severityDescription, startDate, endDate, corridor details, location, comments and streets</param>
         /// <param name="severities">an optional list of Severity names to filter on (a valid list of severities can be obtained from the /Road/Meta/severities endpoint)</param>
         /// <param name="categories">an optional list of category names to filter on (a valid list of categories can be obtained from the /Road/Meta/categories endpoint)</param>
@@ -96,12 +96,12 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<RoadDisruption>> DisruptionAsync(IEnumerable<string> ids, bool? stripContent, IEnumerable<string> severities, IEnumerable<string> categories, bool? closures, CancellationToken cancellationToken)
+        public async Task<IEnumerable<RoadDisruption>> DisruptionAsync(IEnumerable<string> IDs, bool? stripContent, IEnumerable<string> severities, IEnumerable<string> categories, bool? closures, CancellationToken cancellationToken)
         {
-            if (ids == null)
-                throw new ArgumentNullException("ids");
+            if (IDs == null)
+                throw new ArgumentNullException("IDs");
 
-            return await GetAsync<ObservableCollection<RoadDisruption>>(cancellationToken, "/Road/{ids}/Disruption", ("ids", ids), ("stripContent", stripContent), ("severities", severities), ("categories", categories), ("closures", closures));
+            return await GetAsync<IEnumerable<RoadDisruption>>(cancellationToken, "/Road/{IDs}/Disruption", ("IDs", IDs), ("stripContent", stripContent), ("severities", severities), ("categories", categories), ("closures", closures));
         }
 
         /// <summary>Gets a list of disrupted streets. If no date filters are provided, current disruptions are returned.</summary>
@@ -131,7 +131,7 @@ namespace TflUnifiedApiClient
             return await GetAsync<object>(cancellationToken, "/Road/all/Street/Disruption", ("starDate", startDate), ("endDate", endDate));
         }
 
-        /// <summary>Gets a list of active disruptions filtered by disruption Ids.</summary>
+        /// <summary>Gets a list of active disruptions filtered by disruption IDs.</summary>
         /// <param name="disruptionIds">Comma-separated list of disruption identifiers to filter by.</param>
         /// <param name="stripContent">Optional, defaults to false. When true, removes every property/node except for id, point, severity, severityDescription, startDate, endDate, corridor details, location and comments.</param>
         /// <returns>OK</returns>
@@ -141,7 +141,7 @@ namespace TflUnifiedApiClient
             return DisruptionByIdAsync(disruptionIds, stripContent, CancellationToken.None);
         }
 
-        /// <summary>Gets a list of active disruptions filtered by disruption Ids.</summary>
+        /// <summary>Gets a list of active disruptions filtered by disruption IDs.</summary>
         /// <param name="disruptionIds">Comma-separated list of disruption identifiers to filter by.</param>
         /// <param name="stripContent">Optional, defaults to false. When true, removes every property/node except for id, point, severity, severityDescription, startDate, endDate, corridor details, location and comments.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -158,7 +158,7 @@ namespace TflUnifiedApiClient
         /// <summary>Gets a list of valid RoadDisruption categories</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public Task<ObservableCollection<string>> MetaCategoriesAsync()
+        public Task<IEnumerable<string>> MetaCategoriesAsync()
         {
             return MetaCategoriesAsync(CancellationToken.None);
         }
@@ -167,15 +167,15 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<string>> MetaCategoriesAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<string>> MetaCategoriesAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<string>>(cancellationToken, "/Road/Meta/Categories");
+            return await GetAsync<IEnumerable<string>>(cancellationToken, "/Road/Meta/Categories");
         }
 
         /// <summary>Gets a list of valid RoadDisruption severity codes</summary>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public Task<ObservableCollection<StatusSeverity>> MetaSeveritiesAsync()
+        public Task<IEnumerable<StatusSeverity>> MetaSeveritiesAsync()
         {
             return MetaSeveritiesAsync(CancellationToken.None);
         }
@@ -184,9 +184,9 @@ namespace TflUnifiedApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="TflUnifiedApiRoadException">A server side error occurred.</exception>
-        public async Task<ObservableCollection<StatusSeverity>> MetaSeveritiesAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<StatusSeverity>> MetaSeveritiesAsync(CancellationToken cancellationToken)
         {
-            return await GetAsync<ObservableCollection<StatusSeverity>>(cancellationToken, "/Road/Meta/Severities");
+            return await GetAsync<IEnumerable<StatusSeverity>>(cancellationToken, "/Road/Meta/Severities");
         }
     }
 }

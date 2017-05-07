@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -20,16 +20,16 @@ namespace TflUnifiedApiClient
         public string Mode { get; set; }
 
         [Newtonsoft.Json.JsonProperty("lineStrings", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> LineStrings { get; set; }
+        public IEnumerable<string> LineStrings { get; set; }
 
         [Newtonsoft.Json.JsonProperty("stations", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<MatchedStop> Stations { get; set; }
+        public IEnumerable<MatchedStop> Stations { get; set; }
 
         [Newtonsoft.Json.JsonProperty("stopPointSequences", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<StopPointSequence> StopPointSequences { get; set; }
+        public IEnumerable<StopPointSequence> StopPointSequences { get; set; }
 
         [Newtonsoft.Json.JsonProperty("orderedLineRoutes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<OrderedRoute> OrderedLineRoutes { get; set; }
+        public IEnumerable<OrderedRoute> OrderedLineRoutes { get; set; }
 
         public string ToJson()
         {

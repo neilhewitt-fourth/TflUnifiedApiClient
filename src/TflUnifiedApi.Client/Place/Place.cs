@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -27,13 +27,13 @@ namespace TflUnifiedApiClient
 
         /// <summary>A bag of additional key/value pairs with extra information about this place.</summary>
         [Newtonsoft.Json.JsonProperty("additionalProperties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<AdditionalProperties> AdditionalProperties { get; set; }
+        public IEnumerable<AdditionalProperties> AdditionalProperties { get; set; }
 
         [Newtonsoft.Json.JsonProperty("children", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Place> Children { get; set; }
+        public IEnumerable<Place> Children { get; set; }
 
         [Newtonsoft.Json.JsonProperty("childrenUrls", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> ChildrenUrls { get; set; }
+        public IEnumerable<string> ChildrenUrls { get; set; }
 
         /// <summary>WGS84 latitude of the location.</summary>
         [Newtonsoft.Json.JsonProperty("lat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]

@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace TflUnifiedApiClient
 {
@@ -19,7 +19,7 @@ namespace TflUnifiedApiClient
         public string StopLetter { get; set; }
 
         [Newtonsoft.Json.JsonProperty("modes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> Modes { get; set; }
+        public IEnumerable<string> Modes { get; set; }
 
         [Newtonsoft.Json.JsonProperty("icsCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string IcsCode { get; set; }
@@ -40,13 +40,13 @@ namespace TflUnifiedApiClient
         public string HubNaptanCode { get; set; }
 
         [Newtonsoft.Json.JsonProperty("lines", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Identifier> Lines { get; set; }
+        public IEnumerable<Identifier> Lines { get; set; }
 
         [Newtonsoft.Json.JsonProperty("lineGroup", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<LineGroup> LineGroup { get; set; }
+        public IEnumerable<LineGroup> LineGroup { get; set; }
 
         [Newtonsoft.Json.JsonProperty("lineModeGroups", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<LineModeGroup> LineModeGroups { get; set; }
+        public IEnumerable<LineModeGroup> LineModeGroups { get; set; }
 
         [Newtonsoft.Json.JsonProperty("fullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string FullName { get; set; }
@@ -80,13 +80,13 @@ namespace TflUnifiedApiClient
 
         /// <summary>A bag of additional key/value pairs with extra information about this place.</summary>
         [Newtonsoft.Json.JsonProperty("additionalProperties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<AdditionalProperties> AdditionalProperties { get; set; }
+        public IEnumerable<AdditionalProperties> AdditionalProperties { get; set; }
 
         [Newtonsoft.Json.JsonProperty("children", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<Place> Children { get; set; }
+        public IEnumerable<Place> Children { get; set; }
 
         [Newtonsoft.Json.JsonProperty("childrenUrls", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ObservableCollection<string> ChildrenUrls { get; set; }
+        public IEnumerable<string> ChildrenUrls { get; set; }
 
         /// <summary>WGS84 latitude of the location.</summary>
         [Newtonsoft.Json.JsonProperty("lat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
